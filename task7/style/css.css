@@ -1,0 +1,112 @@
+
+.all { width: 1280px; height: 4554px; }
+
+.top { float: left; width: 1280px; height: 56px;  }
+.hezi { float: left; margin-left: 51px; margin-top: 9px; }
+.xin { margin-left: 90px; font-size: 21px; color:#717171; margin-top: 10px;}
+.name { }
+.shou,.shou2,.shou1 { list-style: none; float: right; margin-top: -36px;  color:#83868d; }
+.shou2 { margin-right:40px; color: #f1a4a3;}
+.shou1 { color: #f1a4a3; }
+
+.content1 { width: 1280px; height: 690px;  margin-top: 56px;}
+.shang { width: 1280px; height: 690px;}
+.zhezhao {width: 1280px; height: 710px; margin-top: -690px; filter:alpha(opacity:30); opacity: 0.3;}
+.t1 { font-size: 60px; color: #fff; margin-top: -450px; margin-left:100px;}
+.t2 { font-size: 21px; color: #fffdfd; margin-top: -60px; margin-left:100px; }
+.pink { margin-left:100px; }
+.start { font-size: 30px; color:#fff; margin-left:190px; margin-top: -58px; }
+
+.content2 { width: 1280px; height: 253px; margin-top: 350px; }
+.quan { margin-left:126px; margin-top: 30px;}
+.qi,.hua,.tian { margin-left:200px; margin-top: 30px;}
+.w1,.w2,.w3,.w4 { font-size:14px;  color: #abacac;}
+.w1 { margin-left: 100px; margin-top: 20px; }
+.w2 { margin-top: -44px; margin-left: 370px;}
+.w3 { margin-top: -44px; margin-left: 674px;}
+.w4 { margin-top: -44px; margin-left: 980px;}
+.hui1,.hui2,.hui3,.hui4 { width: 2px; height: 52px; background: #bbb; margin-top: -60px;}
+.hui1 { margin-left: 310px; }
+.hui2 { margin-left: 600px; }
+.hui3 { margin-left: 900px; }
+
+.content3 { width: 1280px; height: 355px; background: #edecec; }
+.haha { margin-left: 496px; }
+.world { font-size: 54px; color: #a1a1a1; margin-left: 217px; margin-top: 51px; }
+
+.content4 { width: 1280px; height: 342px; background: url(../images/ditu1.jpg)}
+.ditu1 {width: 1280px; height: 342px; }
+.ditu2 {width: 1280px; height: 360px;  margin-top: -342px; filter:alpha(opacity:20); opacity: 0.2;}
+.city1 { font-size: 21px; color: #fff; font-weight: bold; margin-left: 502px; margin-top: -300px; }
+.city2 { font-size: 12px; color:#fff; margin-left:452px; margin-top: 20px;}
+.z2 { margin-left:400px; margin-top: 30px;}
+.province {  margin-left:520px; margin-top: 10px; }
+.more { float: left; margin-left: 400px; margin-top: -60px; }
+.more2 { float:left; margin-left: 400px; margin-top: -120px; }
+.more3 { float:left; margin-left: 400px; margin-top: -180px;}
+
+.content5 { width: 1280px; height: 606px; background: #f8f8f7; margin-top: -20px; }
+.act { font-size:14px; color: #3e3f3f; margin-left: 230px; margin-top: -160px;}
+.un { font-size: 10px; color: #9f9f9f; margin-left:224px; }
+.hai { font-size: 24px; color:#323333; margin-left: 416px; margin-top:-410px; padding-left: 10px;}
+.hai2 { font-size:10px; color: #9fa09f; margin-left:464px; margin-top: -20px;}
+.shen { font-size: 14px; color: #3e3f3f; margin-left:730px; margin-top: 300px; }
+.shen2 { font-size:10px; color: #9f9f9f; margin-left: 710px; }
+.xiang { font-size: 14px; color:#3e3f3f; margin-left:1000px; margin-top: -60px;}
+.xiang2 { font-size:10px; color: #9f9f9f; margin-left: 988px;}
+
+.content6 { width: 1280px; height: 566px; }
+.m1 { font-size: 50px; margin-left:353px; color: #fff; margin-top: -420px;}
+.m2 { font-size: 156px; margin-left:250px; color: #fff; margin-top: -80px; }
+.m3 { font-size: 22px; margin-left:350px; color: #fff; margin-top: -180px;}
+.m4 { font-size:22px; margin-left:370px; color: #fff; margin-top: -20px; }
+.m5 { font-size:22px; margin-left:1000px; color: #323333; margin-top: -260px;}
+.m6 { font-size:12px; color: #bdbdbd; margin-left:910px; line-height: 32px;}
+.m7 { color:#e74f4d; }
+.hong { width: 106px; height: 33px; border: #e4666a 1px solid; margin-left:1000px; margin-top: -180px;}
+.geng { font-size: 13px; color:#e4666a; padding-left:24px; margin-top: 8px;}
+.m8 {  margin-left: 1008px; margin-top: 50px; } 
+
+.content7 { width: 1280px; height: 523px; margin-top: 144px; }
+.no2,.no3 { float:right; }
+.no2 { margin-top: -523px; filter:alpha(opacity:40); opacity: 0.4; }
+.c1,.c2,.c3,.c4 { font-size: 21px; }
+.c1 { margin-left: 172px; margin-top: -370px; color: #fff; }
+.c2 { margin-left: 110px; margin-top:-10px; color:#fff; }
+.c3 { color:#323333; margin-left: 600px; margin-top: -92px; }
+.c4 { color: #323333; margin-left: 540px; margin-top: -10px; }
+.k1,.k2 { width: 106px; height: 33px; }
+.k2 {  width: 170px; height: 43px; border: #e4666a 1px solid; margin-left:540px; margin-top: -330px; }
+.n2 { font-size: 21px; color:#e4666a; padding-left:44px; margin-top: 8px; }
+.vvv { margin-left: 100px; margin-top: -50px; }
+
+.content8 { width: 1280px; height:750px;}
+.zhi { font-size: 21px; color:#323333;margin-left: 560px; margin-top: 320px; }
+.heng { font-size: 12px; color: #b7b7b7; margin-left: 450px; }
+.l1 { margin-top: 100px; }
+.l1,.l3,.l5 { font-size: 14px; color: #74706f;line-height: 43px; list-style: none; margin-left: 110px; }
+.l2,.l4 { font-size: 12px; color: #a5a3a2; list-style: none; margin-left: 110px; line-height: 22px;}
+.ao1 { float: right; margin-right: 142px; margin-top: -230px;}
+.ao2 { float: right; margin-right: 471px;margin-top: -230px; }
+.ao3 { float: right; margin-right: 142px; margin-top: -176px;}
+.ao4 { float: right; margin-right: 471px; margin-top: -176px;}
+.ao5 { float: right; margin-right: 142px; margin-top: -122px; }
+.ao6 { float:right; margin-right: 142px; margin-top: 8px;}
+.x1,.x2,.x3,.x4,.x5 {  font-size:12px; color: #6c6868;  }
+.x1 { margin-left: 504px; margin-top: -216px; }
+.x2 { margin-left: 504px; margin-top: 36px; }
+.x3 { margin-left: 840px; margin-top: -80px;}
+.x4 { margin-left: 840px; margin-top:36px; }
+.x5 { margin-left: 504px; margin-top: 34px; }
+.x6 { margin-left:780px; margin-top: 100px;}
+
+.content9 { width:1280px; height: 360px; background: #32353e; margin-top: -130px;}
+.lan1 { font-size: 21px; margin-left: 600px; padding-top: 50px; color:#fff; }
+.lan2 { font-size: 12px; margin-left:400px; color: #fff; }
+.sub { margin-left: 380px; }
+.email { color: #aaaaaa; font-size:14px; margin-left: 400px; margin-top: -36px;}
+.qq { margin-left: 530px; margin-top: 20px; }
+
+.content10 { width: 1280px; height: 56px; background: #2f3038; margin-top: -12px;}
+.bo1 { font-size:12px; color: #fff; margin-left: 100px; padding-top: 31px; }
+.bo2 { font-size: 12px; margin-left: 1100px;  margin-top: -32px; color: #fff;}
