@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>滑动的菜单</title>
+	<style type="text/css">
+    *{
+    	padding: 0;
+    	margin: 0;
+    }
+    li{
+    	list-style: none;
+    }
+
+    ul{
+    	width: 400px;
+    	height: 30px;
+    	position: relative;
+    	margin: 100px auto;
+
+    }
+    li{
+    	float: left;
+    	width: 98px;
+    	height: 28px;
+    	line-height: 28px;
+    	border: 1px solid #ccc;
+    	text-align: center;
+    	z-index: 2;
+    	position: relative;
+    	cursor: pointer;
+    }
+    .bg{
+    	width: 100px;
+    	height: 5px;
+    	/*overflow: hidden;*/
+    	background: red;
+    	position: absolute;
+    	border: none;
+    	top: 24px;
+    	left: 0;
+    	z-index: 1;
+    }
+	</style>
+</head>
+<body>
+    <ul id="ul1">
+      <li>首页</li>
+      <li>关于我们</li>
+      <li>产品</li>
+      <li>联系方式</li>
+      <li class="bg"></li>
+    </ul>
+	<script type="text/javascript" src="滑动的菜单.js"></script>
+</body>
+</html>
