@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>无缝滚动</title>
+	<style type="text/css">
+    *{
+        margin: 0;
+        padding: 0;
+    }
+    #div1{
+    	position: relative;
+    	border: 1px solid black;
+    	width: 880px;
+    	height: 220px;
+    	margin: 0 auto;
+    	overflow: hidden;
+    }
+    #div1 ul{
+        position: absolute;
+        left: 0;
+    }
+    #div1 ul li{
+    	list-style: none;
+    	float:left;
+    	padding: 10px;
+    }
+    #div1 ul li img{
+        width: 200px;
+    	height: 200px;
+    }
+	</style>
+</head>
+<body>
+    <a href="javascript:;"><-</a>
+    <a href="javascript:;">-></a>
+    <div id="div1">
+	    <ul>
+	      <li><img src="仿flash图片的轮换/images/1.jpg"></li>
+	      <li><img src="仿flash图片的轮换/images/2.jpg"></li>
+	      <li><img src="仿flash图片的轮换/images/3.jpg"></li>
+	      <li><img src="仿flash图片的轮换/images/4.jpg"></li>
+	    </ul>
+    </div>
+	<script type="text/javascript" src='无缝滚动.js'></script>
+</body>
+</html>
