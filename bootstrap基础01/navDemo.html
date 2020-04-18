@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=divice-width,initial-scale=1">
+	<title>Bootstrap</title>
+	<link rel="stylesheet" type="text/css" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+	<style type="text/css">
+
+	</style>
+</head>
+<body>
+    <div class="container">
+       <ul id="mytab" class="nav nav-pills nav-justified" role="tablist">
+          <li role="presentation" class="active"><a href="#">Home</a></li>
+          <li role="presentation"><a href="#">Hello</a></li>
+          <li role="presentation" class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">
+            world
+            <span class="caret"></span>
+          </a>
+            <ul class="dropdown-menu" role="menu">
+              <li role="presentation"><a href="#" role="menuitem" tabindex=-1>hello1</a></li>
+              <li role="presentation"><a href="#" role="menuitem" tabindex=-1>hello2</a></li>
+              <li role="presentation"><a href="#" role="menuitem" tabindex=-1>hello3</a></li>
+              <li role="presentation"><a href="#" role="menuitem" tabindex=-1>hello4</a></li>
+            </ul>
+          </li>
+       </ul>
+    </div>
+
+    <script type="text/javascript" src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script type="text/javascript">
+      $("#mytab a").click(function(e){
+         // e.preventDefault();
+         $(this).tab("show");
+      })
+    </script>
+</body>
+</html>
