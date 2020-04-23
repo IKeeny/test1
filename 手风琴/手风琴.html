@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>手风琴</title>
+	<style type="text/css">
+	  *{
+	  	padding: 0;
+	  	margin: 0;
+	  }
+	  li{
+	  	list-style: none;
+	  }
+	  body{
+	  	background: #f6f9fc;
+	  }
+
+	  div{
+	  	width: 660px;
+	  	height: 254px;
+	  	border: 1px solid #ccc;
+	  	margin: 50px auto 0;
+	  }
+	  ul{
+	  	width: 3300px;
+	  	height: 254px;
+	  }
+	  ul li{
+	  	width: 22px;
+	  	height: 254px;
+	  	float: left;
+	  	position: relative;
+	  	overflow: hidden;
+	  }
+	  .active{
+	  	width: 550px;
+	  }
+	  ul span{
+	  	width: 21px;
+	  	height: 244px;
+	  	padding-top: 10px;
+	  	border-right: 1px solid #fff;
+	  	position: absolute;
+	  	top: 0;
+	  	right: 0;
+	  	color: #000;
+	  	font-size: 12px;
+	  	text-align: center;
+	  	cursor: pointer;
+	  }
+	  ul img{
+	  	width: 550px;
+	  	height: 254px;
+	  }
+	  .bg0{
+	  	background: #00FFCC;
+	  }
+	  .bg1{
+	  	background: #636363;
+	  }
+	  .bg2{
+	  	background: #3d7fbb;
+	  }
+	  .bg3{
+	  	background: #5ca716;
+	  }
+	  .bg4{
+	  	background: #f28b24;
+	  }
+	  .bg5{
+	  	background: #7c0070;
+	  }
+	</style>
+</head>
+<body>
+    <div id="show1">
+      <ul>
+        <li class="active">
+          <span class="bg0">
+            这是第一个
+          </span>
+          <img src="images/1.jpg">
+        </li>
+        <li>
+          <span class="bg1">
+            这是第二个
+          </span>
+          <img src="images/2.jpg">
+        </li>
+        <li>
+          <span class="bg2">
+            这是第三个
+          </span>
+          <img src="images/3.jpg">
+        </li>
+        <li>
+          <span class="bg3">
+            这是第四个
+          </span>
+          <img src="images/4.jpg">
+        </li>
+        <li>
+          <span class="bg4">
+            这是第五个
+          </span>
+          <img src="images/5.jpg">
+        </li>
+        <li>
+          <span class="bg5">
+            这是第六个
+          </span>
+          <img src="images/6.jpg">
+        </li>
+      </ul>
+    </div>
+	<script type="text/javascript" src="手风琴.js"></script>
+</body>
+</html>
