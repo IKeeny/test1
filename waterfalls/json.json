@@ -1,0 +1,10 @@
+// {"employees":{
+// 	"name":"菜鸟教程","site":"http://www.runoob.com" ,
+// 	"name":"Google","site":"http://www.Google.com" ,
+// 	"name":"Taobao","site":"http://www.taobao.com" }
+
+{"sites":[
+    {"name":"Runoob", "url":"www.runoob.com"}, 
+    {"name":"Google", "url":"www.google.com"},
+    {"name":"Taobao", "url":"www.taobao.com"}
+]}
