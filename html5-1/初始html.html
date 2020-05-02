@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>初始html</title>
+</head>
+<body>
+    <!-- 页面结构 -->
+	<header>用在页面的头部或者版块头部</header>
+	<nav>
+	  <p><a href="#">导航</a></p>
+	  <p><a href="#">导航</a></p>
+	</nav>
+	<hgroup>
+	  <h1>主标题</h1>
+	  <h2>子标题</h2>
+	</hgroup>
+
+	<section>划分版块不同区域</section>
+	<article>用来在页面中表示一套结构完整且独立的内容部分</article>
+	<aside>和主体相关的附属信息</aside>
+	<footer>用在页面的底部或者版块的底部</footer>
+
+	<!-- 媒体元素组合 -->
+	<figure> 
+	  <img src="">
+	  <figcaption>对图片或视频的描述</figcaption>
+	</figure>
+
+	<time>202052时间标签，表示时间和日期</time>
+	<time datetime="2020-2-14">情人节</time><br>
+
+	<input type="text" name="" list="valList">
+	<!-- 提示信息列表  与input元素配合使用，来定义input可能的值-->
+	<datalist id="valList">
+	   <option value="javascript">javascript</option>
+	   <option value="html">html</option>
+	   <option value="css">css</option>
+	</datalist>
+
+	<details>
+	  用于描述文档或文档某个部分的细节<br>
+	  <p>该元素用于摘录引用等，应该与页面的主要内容区分开的其他内容</p>
+	  <p>open属性默认展开</p>
+	</details>
+
+	<summary>details元素的标题</summary>
+
+	<details open>
+	  <summary>html5新特性</summary>
+	  <p>一万个小时不是梦，每天进步一点点</p>
+	</details>
+    
+    <!-- 对话 这个标签有点鸡肋 -->
+	<dialog open>
+	  <dt>老师</dt>
+	  <dd>2+2 = ?</dd>
+	  <dt>学生</dt>
+	  <dd>4</dd>
+	  <dt>老师</dt>
+	  <dd>答对了</dd>
+	</dialog>
+
+	<address>定义文章或者作者详细信息</address>
+
+	<mark style="background-color: red">标记</mark>
+
+	<form action="http://baidu.com" method="get">
+	  用户：<input type="text" name="user_name">
+	  公钥：<keygen name="security"></keygen>
+	  <input type="submit" name="">
+	</form>
+
+	<progress value="43" max="100">
+	  <span>76</span>%
+	</progress>
+</body>
+</html>

@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>html5新增表单控件和表单属性</title>
+	
+</head>
+<body>
+    <form>
+      <!-- 格式不正确提交时会提示输入正确的邮箱地址  移动端还会切换到英文键盘-->
+      <input type="email" name="">
+      <input type="submit" name="" value="提交">
+    </form>
+    
+    <form>
+      <!-- 在移动端会自动切换到数字键盘 -->
+      <input type="tel" name="">
+      <input type="submit" name="" value="提交">
+    </form>
+
+    <form>
+      <!-- 提示输入正确的网址格式 -->
+      <input type="url" name="">
+      <input type="submit" name="" value="提交">
+    </form>
+
+    <form>
+      <!-- 输入框后面有个x,点击可清空输入内容 -->
+      <input type="search" name="">
+      <input type="submit" name="" value="提交">
+    </form>
+
+    <form>
+      <!-- 特定范围内的数值选择器 -->
+      <input type="range" name="" step="2" min="0" max="10" value="2">
+      <input type="submit" name="" value="提交">
+    </form>
+
+    <form>
+      <!-- 数值可以向上或者向下加减 -->
+      <input type="number">
+      <input type="submit" name="" value="提交">
+    </form>
+
+    <form>
+      <!-- 颜色选择器 -->
+      <input type="color">
+      <input type="submit" name="" value="提交">
+    </form>
+    
+    <!-- 日期和时间 -->
+    <form>
+      <!-- 显示完整日期包含时区utc 谷歌上没看出来 -->
+      <input type="datetime" >
+      <input type="submit" name="" value="提交">
+    </form>
+    <form>
+      <!-- 显示完整日期不包含时区utc -->
+      <input type="datetime-local">
+      <input type="submit" name="" value="提交">
+    </form>
+    <form>
+      <!-- 显示小时和分钟 -->
+      <input type="time">
+      <input type="submit" name="" value="提交">
+    </form>
+    <form>
+      <!-- 显示日期 -->
+      <input type="date">
+      <input type="submit" name="" value="提交">
+    </form>
+    <form>
+      <!-- 显示周 -->
+      <input type="week">
+      <input type="submit" name="" value="提交">
+    </form>
+    <form>
+      <!-- 显示月 -->
+      <input type="month">
+      <input type="submit" name="" value="提交">
+    </form>
+    
+    <!-- 新的表单特性和函数 -->
+    <form action="http://www.baidu.com">
+      <!-- placeholder输入框提示信息 -->
+      <!-- autocomplete是否保存输入值 -->
+      <!-- autofocus指定表单获取输入焦点 -->
+      <!-- required必须填写，此选项不能为空 -->
+      <!-- pattern加入正则校验 PC端直接写在行间不安全-->
+      <!-- formaction提交到另外一个地址 
+           formnovalidate关闭表单验证
+      -->
+      <input type="text" placeholder="请输入4-16个字符" name="user" autocomplete="off" required="" pattern="\d{1,5}">
+      <input type="password" name="password" placeholder="请输入4-16个字符" autocomplete="off" autofocus="">
+      <input type="submit" name="">
+      <input type="submit" name="" value="保存至草稿箱" formaction="http://www.qq.com" formnovalidate="">
+    </form>
+</body>
+</html>

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>html5兼容</title>
+	<!-- <script type="text/javascript">
+       //在ie浏览器下兼容，用document创建出来
+       //要放在头部，因为是从上往下渲染的，要不然还是没反应
+       document.createElement('header');
+       document.createElement('article');
+       document.createElement('aside');
+       document.createElement('footer');
+       // alert(1);
+    </script> -->
+<!-- 	<style type="text/css">
+	body{
+		margin: 0;
+	}
+	header{
+		height: 100px;
+		background: #9F3;
+		display: block;
+	}
+	article{
+		padding: 10px;
+		background: #ccc;
+		position: relative;
+		display: block;
+	}
+	aside{
+		width: 200px;
+		height: 300px;
+		background: pink;
+		position: absolute;
+		left: 10px;
+		top: 10px;
+		display: block;
+	}
+	section{
+		margin-left: 210px;
+		background: #F90;
+		height: 300px;
+		display: block;
+	}
+	footer{
+		height: 100px;
+		background: #c6c;
+		display: block;
+	}
+	ha{
+		background: red;
+		/*要变成块标签*/
+		display: block;
+		height: 100px;
+	}
+	</style> -->
+
+	<!-- 用html5shiv插件的方式 解决兼容问题 -->
+	<script type="text/javascript" src="https://cdn.bootcdn.net/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.js"></script>
+	<style type="text/css">
+	body{
+		margin: 0;
+	}
+	header{
+		height: 100px;
+		background: #9F3;
+	}
+	article{
+		padding: 10px;
+		background: #ccc;
+		position: relative;
+	}
+	aside{
+		width: 200px;
+		height: 300px;
+		background: pink;
+		position: absolute;
+		left: 10px;
+		top: 10px;
+	}
+	section{
+		margin-left: 210px;
+		background: #F90;
+		height: 300px;
+	}
+	footer{
+		height: 100px;
+		background: #c6c;
+	}
+	</style>
+</head>
+<body>
+    <header>页面头部</header>
+    <article>
+      <aside>侧边栏</aside>
+      <section>内容区域</section>
+    </article>
+    <footer>页面底部</footer>
+    <progress value="56" max="100">
+
+    <!-- 自定义标签 -->
+    <!-- <ha>这是我定义的不存在的标签</ha> -->
+
+</body>
+</html>
