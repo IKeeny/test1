@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>JSON的新方法</title>
+	
+</head>
+<body>
+  
+  <script type="text/javascript">
+  // eval可以解析任何字符串，变成js
+  // var str = 'function show(){alert(123)}';
+  // eval(str);
+  // show();  //123
+  
+  // parse只能解析JSON形式的字符串变成js (安全性要高一些)
+  //      字符串中的属性要严格加上引号
+  // var str = 'function show(){alert(123)}';
+  // JSON.parse(str);  //会报错
+  // show();
+  // 
+  // var str2 = '{"name":"hello"}';
+  // var json = JSON.parse(str2);
+  // alert(json.name);
+  // 
+  // 对象引用
+  var a1 = { name: 'hello'};
+  var a2 = { name: { age: 10 }};
+  // var b = a1;
+  // 
+  // 浅拷贝
+  // for(var attr in a1){
+  //   b[attr] = a1[attr];
+  // }
+  // 
+  // 实现深拷贝
+  var str3 = JSON.stringify(a2);
+  var b = JSON.parse(str3);
+  b.name.age = 20;
+  alert(a2.name.age);
+  </script>
+</body>
+</html>

@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>拖放操作</title>
+  <style type="text/css">
+  *{
+    margin: 0;
+    padding: 0;
+  }
+
+  /*清除浮动*/
+  .clearfix:after,.clearfix:before{
+    content:'';
+    display: table;
+  }
+  .clearfix:after{
+    clear: both;
+  }
+  .clearfix{
+    zoom: 1;
+  }
+  li{
+    list-style: none;
+    float: left;
+    width: 200px;
+    border: 1px solid #000;
+    margin: 10px;
+  }
+  li img{
+    width: 200px;
+    height: 200px;
+  }
+  li p{
+    border-bottom: 1px dashed #000;
+  }
+  
+  #div1{
+    width: 600px;
+    border: 1px solid #000;
+    height: 300px;
+  }
+  p{
+    border-bottom: 1px dashed #000;
+    height:20px;
+  }
+  .box1{
+    float: left;
+    width: 200px;
+  }
+  .box2{
+    float: left;
+    width: 200px;
+  }
+  .box3{
+    float: left;
+    width: 200px;
+  }
+  #allMoney{
+    float: right;
+  }
+  </style>
+</head>
+<body>
+  <ul class="clearfix">
+    <li draggable="true">
+      <img src="images/1.jpg">
+      <p>小王子一号</p>
+      <p>40￥</p>
+    </li>
+    <li draggable="true">
+      <img src="images/2.jpg">
+      <p>小王子二号</p>
+      <p>60￥</p>
+    </li>
+    <li draggable="true">
+      <img src="images/3.jpg">
+      <p>小王子三号</p>
+      <p>100￥</p>
+    </li>
+  </ul>
+  <div id="div1">
+    <!-- <p>
+      <span class="box1">1</span>
+      <span class="box2">小王子一号</span>
+      <span class="box3">40￥</span>
+    </p>
+    <p>
+      <span class="box1">1</span>
+      <span class="box2">小王子一号</span>
+      <span class="box3">40￥</span>
+    </p>
+    <p>
+      <span class="box1">1</span>
+      <span class="box2">小王子一号</span>
+      <span class="box3">40￥</span>
+    </p> -->
+    
+    <!-- 总价 -->
+    <!-- <div id="allMoney">120￥</div> -->
+  </div>
+
+  <script type="text/javascript">
+  window.onload = function(){
+    var aLi = document.getElementsByTagName('li');
+    var oDiv = document.getElementById('div1');
+
+    var obj = {};
+    var iNum = 0;
+    var allMoney = null;
+
+    for(var i=0; i<aLi.length; i++){
+      aLi[i].ondragstart = function(event){
+        var aP = this.getElementsByTagName('p');
+
+        event.dataTransfer.setData('title',aP[0].innerHTML);
+        event.dataTransfer.setData('money',aP[1].innerHTML);
+
+        event.dataTransfer.setDragImage(this,0,0);
+      }
+
+      oDiv.ondragover = function(event){
+        event.preventDefault();
+      }
+
+      oDiv.ondrop = function(event){
+        event.preventDefault();
+
+        var sTitle = event.dataTransfer.getData('title');
+        var sMoney = event.dataTransfer.getData('money');
+
+        if (!obj[sTitle]) {
+
+          var oP = document.createElement('p');
+          var oSpan = document.createElement('span');
+          oSpan.className = 'box1';
+          oSpan.innerHTML = 1;  //1是字符串
+          oP.appendChild(oSpan);
+          var oSpan = document.createElement('span');
+          oSpan.className = 'box2';
+          oSpan.innerHTML = sTitle;
+          oP.appendChild(oSpan);
+          var oSpan = document.createElement('span');
+          oSpan.className = 'box3';
+          oSpan.innerHTML = sMoney;
+          oP.appendChild(oSpan);
+
+          oDiv.appendChild(oP);
+
+          obj[sTitle] = 1;
+
+        }else{
+          var box1 = document.getElementsByClassName('box1');
+          var box2 = document.getElementsByClassName('box2');
+
+          for(var i=0; i<box2.length; i++){
+            if (box2[i].innerHTML == sTitle){
+              box1[i].innerHTML = parseInt(box1[i].innerHTML) + 1;
+            }
+          }
+
+        }
+        
+        if (!allMoney) {
+          //只能创建一次，不能创建多次，因此放在外面 全局对象
+          allMoney = document.createElement('div');
+          allMoney.id = 'allMoney';
+        }
+
+        iNum += parseInt(sMoney);
+
+        allMoney.innerHTML = iNum + '￥';
+
+        oDiv.appendChild(allMoney);
+        
+      }
+    }
+  }
+  </script>
+</body>
+</html>

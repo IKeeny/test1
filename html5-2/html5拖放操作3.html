@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>拖放操作</title>
+  <style type="text/css">
+  #div1{
+    width: 200px;
+    height: 200px;
+    background: red;
+    margin: 100px;
+  }
+  </style>
+</head>
+<body>
+  <div id="div1">将文件拖拽到此区域</div>
+  <ul id="ul1"></ul>
+  
+  <!-- 事件的执行顺序：drop不触发的时候
+     dragstart->drag->dragenter->dragover>dragleave->dragend
+  事件的执行顺序：drop触发的时候(dragover的时候阻止默认事件)
+     dragstart->drag->dragenter->dragover>drop->dragend
+  不能释放的光标和能释放的光标不一样 -->
+  <script type="text/javascript">
+  window.onload = function(){
+    var oDiv = document.getElementById('div1');
+    var oUl = document.getElementById('ul1');
+    var i = 0;
+    
+    //目标元素事件：事件对象为目标元素
+    //进入目标元素触发，相当于mouseover
+    oDiv.ondragenter = function(){
+      this.innerHTML = '可以释放啦';
+    }
+    
+    //在enter和leave之间连续触发
+    oDiv.ondragover = function(event){
+      //document.title = i++;
+      //要想触发drop事件，必须在dragover中阻止默认事件
+      event.preventDefault();
+    }
+
+    //离开目标元素触发，相当于mouseout
+    oDiv.ondragleave = function(){
+      this.innerHTML = '将文件拖拽到此区域';
+    }
+    
+    //鼠标移开时触发
+    oDiv.ondrop = function(event){
+      event.preventDefault();
+      
+      //files
+      //  获取外部拖拽的文件，返回一个FileList列表
+      //  fileList下有个type属性，返回文件的类型
+      var fs = event.dataTransfer.files;
+      // alert(fs);//object FileList
+      // alert(fs[0].type); //application/vnd.openxmlformats-officedocument.wordprocessingml.document
+      
+      //readAsDataURL
+      //  参数为要读取的文件对象，将文件读取为DataUrl
+      //  
+      //onload
+      //  当读取文件完成的时候触发此事件
+      //  this.result,来获取读取的文件的数据，如果是图片，将返回base64格式的图片数据
+      //  
+      //实例
+      //  拖拽删除列表
+      //  拖拽购物车
+      //  上传图片预览功能
+      // var fd = new FileReader();
+      // fd.readAsDataURL(fs[0]);
+      // fd.onload = function(){
+      //    // alert(this.result);
+         
+      //    var oLi = document.createElement('li');
+      //    var oImg = document.createElement('img');
+      //    oImg.src = this.result;
+      //    oLi.appendChild(oImg);
+      //    oUl.appendChild(oLi);
+      // }
+      
+      for(var i=0; i<fs.length; i++){
+
+        if (fs[i].type.indexOf('image')!=-1) {
+          var fd = new FileReader();
+          fd.readAsDataURL(fs[i]);
+          fd.onload = function(){
+             // alert(this.result);
+             
+             var oLi = document.createElement('li');
+             var oImg = document.createElement('img');
+             oImg.src = this.result;
+             oLi.appendChild(oImg);
+             oUl.appendChild(oLi);
+          }
+        }else{
+          alert('请上传图片类型');
+        }
+      }
+
+    }
+
+  }
+  </script>
+</body>
+</html>

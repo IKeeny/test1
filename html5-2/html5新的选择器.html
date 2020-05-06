@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>html5新的选择器</title>
+	
+</head>
+<body>
+  <div id="div1" class="box" title="hello">div</div>
+  <div class="box">div2</div>
+  <div class="box1 box2 box3" id="div3">div3</div>
+
+  <script type="text/javascript">
+  window.onload = function(){
+     //querySelector只能选择一个元素（一组中的第一个）
+     var oDiv = document.querySelector('.box');
+     // var oDiv = document.querySelector('[title="hello"]');
+     
+     //querySelectorAll获取一组元素
+     var aDiv = document.querySelectorAll('.box');
+     // alert(aDiv.length);  //2
+
+     // oDiv.style.background = 'red';
+     aDiv[1].style.background = 'yellow';
+
+     var oDiv3 = document.getElementById('div3');
+     // alert(typeof oDiv3.classList);  //object  类似于数组的对象 可以循环 有length
+     //alert(oDiv3.classList);  //box1 box2 box3
+     
+     oDiv3.classList.add('box4');  //会给它再添加一个class名称
+
+     oDiv3.classList.remove('box2');//删除一个class名称
+
+     oDiv3.classList.toggle('box7');//如果原来有的话就执行删除，原来没有的话就执行添加
+  }
+  </script>
+</body>
+</html>

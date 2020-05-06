@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>拖放操作</title>
+  <style type="text/css">
+  li{
+    width: 100px;
+    height: 30px;
+    background: yellow;
+    margin: 10px;
+    list-style: none;
+  }
+  #div1{
+    width: 100px;
+    height: 100px;
+    background: red;
+    margin: 200px;
+  }
+  </style>
+</head>
+<body>
+  <ul>
+    <li draggable="true">a</li>
+    <li draggable="true">b</li>
+    <li draggable="true">c</li>
+  </ul>
+  <div id="div1"></div>
+  
+  <!-- 事件的执行顺序：drop不触发的时候
+     dragstart->drag->dragenter->dragover>dragleave->dragend
+  事件的执行顺序：drop触发的时候(dragover的时候阻止默认事件)
+     dragstart->drag->dragenter->dragover>drop->dragend
+  不能释放的光标和能释放的光标不一样 -->
+  <script type="text/javascript">
+  window.onload = function(){
+    var oUl = document.getElementsByTagName('ul')[0];
+    var aLi = oUl.getElementsByTagName('li');
+    var oDiv = document.getElementById('div1');
+    var i = 0;
+
+    for(var i=0; i<aLi.length; i++){
+
+      aLi[i].index = i;
+
+      //拖拽元素事件：事件对象为被拖拽元素
+      //拖拽的一瞬间触发
+      aLi[i].ondragstart = function(event){
+        
+        var event = event || window.event;
+        // event.dataTransfer.setData('name','hello');
+        event.dataTransfer.setData('name',this.index);
+
+        this.style.background = 'red';
+
+      }
+      
+      //在拖拽开始与结束之间连续触发，与onmousemove不同的是，即使在这期间没有移动，依然会触发拖拽
+      aLi[i].ondrag = function(){
+        document.title = i++;
+      }
+
+      //拖拽结束时触发
+      aLi[i].ondragend = function(){
+        this.style.background = 'green';
+      }
+    }
+    
+    //目标元素事件：事件对象为目标元素
+    //进入目标元素触发，相当于mouseover
+    oDiv.ondragenter = function(){
+      this.style.background = 'pink';
+    }
+    
+    //在enter和leave之间连续触发
+    oDiv.ondragover = function(event){
+      //document.title = i++;
+      //要想触发drop事件，必须在dragover中阻止默认事件
+      event.preventDefault();
+    }
+
+    //离开目标元素触发，相当于mouseout
+    oDiv.ondragleave = function(){
+      this.style.background = 'red';
+    }
+    
+    //鼠标移开时触发
+    oDiv.ondrop = function(event){
+      // alert(124);
+      // alert(event.dataTransfer.getData('name'));
+      oUl.removeChild(aLi[event.dataTransfer.getData('name')]);
+
+      //删除之后索引值会发生变化，因此要重新循环添加索引值
+      for(var i=0; i<aLi.length; i++){
+        aLi[i].index = i;
+      }
+
+    }
+
+  }
+  </script>
+</body>
+</html>
