@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>像素</title>
+  <style type="text/css">
+  body{
+    background: #000;
+    color: #fff;
+    font-size: 30px;
+  }
+  #c1{
+    background: #fff;
+    /*在这里设置画布的宽高以后，在画布里画的图形宽高会等比例缩放*/
+    width: 400px;
+    height: 400px;
+  }
+  #c1 span{
+    color: #fff;
+  }
+  ul{
+    float: left;
+  }
+  </style>
+</head>
+<body>
+  <canvas id="c1" width="400" height="400"></canvas>
+    <ul>
+      <li>这</li>
+      <li>是</li>
+      <li>啥</li>
+      <li>啊</li>
+    </ul>
+  <script type="text/javascript">
+  window.onload = function(){
+    var oC = document.getElementById('c1');
+    var oGC = oC.getContext('2d');
+
+    //oGC.fillRect(0,0,100,100);
+    
+    //获取图像数据
+    // var oImg = oGC.getImageData(0,0,100,100);
+    // alert(oImg.width); //一行的像素
+    // alert(oImg.height); //一列的像素
+    // alert(oImg.data);  //整体像素的数组集合
+    // alert(oImg.data.length); //40000  4个值代表一个像素
+    // alert(oImg.data[0]);  //0-255 黑色到白色
+    // alert(oImg.data[1]);  //0-255 黑色到白色
+    // alert(oImg.data[2]);  //0-255 黑色到白色
+    // alert(oImg.data[3]);  //0-255 透明到不透明
+    
+    // //创建新像素集合
+    // var oImg = oGC.createImageData(100,50);  //初始值是全透明的黑色
+    
+    // for(var i=0; i<oImg.width*oImg.height; i++){
+    //   oImg.data[4*i] = 255;
+    //   oImg.data[4*i+1] = 0;
+    //   oImg.data[4*i+2] = 0;
+    //   oImg.data[4*i+3] = 100;
+    // }
+    // oGC.putImageData(oImg,200,100);
+    
+    var aLi = document.getElementsByTagName('li');
+    for(var i=0; i<aLi.length; i++){
+      aLi[i].onclick = function(){
+        oGC.clearRect(0,0,oC.width,oC.height);
+        var str = this.innerHTML;
+        var h = 180;
+        var timer = null;
+        clearInterval(timer);
+        var iNow = 0;
+
+        oGC.font = h + 'px impact';
+        oGC.textBaseline = 'top';
+        oGC.fillStyle = 'red';
+        var w = oGC.measureText(str).width;
+        oGC.fillText(str,(oC.width-w)/2,(oC.height-h)/2);
+        
+        //像素显字的效果
+        //获取字的像素的区域
+        var oImg = oGC.getImageData((oC.width-w)/2,(oC.height-h)/2,w,h);
+        oGC.clearRect(0,0,oC.width,oC.height);
+        var arr = randomArr(w*h,w*h/10);
+        var newImg = oGC.createImageData(w,h);
+
+        timer = setInterval(function(){
+          for(var i=0; i<arr[iNow].length; i++){
+            newImg.data[4*arr[iNow][i]] = oImg.data[4*arr[iNow][i]];
+            newImg.data[4*arr[iNow][i]+1] = oImg.data[4*arr[iNow][i]+1];
+            newImg.data[4*arr[iNow][i]+2] = oImg.data[4*arr[iNow][i]+2];
+            newImg.data[4*arr[iNow][i]+3] = oImg.data[4*arr[iNow][i]+3];
+          }
+          oGC.putImageData(newImg,(oC.width-w)/2,(oC.height-h)/2);
+
+          if (iNow == 9) {
+            iNow = 0;
+            clearInterval(timer);
+          }else{
+            iNow++;
+          }
+        },200);
+        
+      }
+    }
+    
+    // //获取数组固定个数的随机数
+    // function randomArr(iAll,iNow){
+    //    var arr = [];
+    //    var newArr = [];
+    //    for(var i=0; i<iAll; i++){
+    //      arr.push(i);
+    //    }
+    //    for(var i=0; i<iNow; i++){
+    //      newArr.push(arr.splice(Math.floor(Math.random()*arr.length),1));
+    //    }
+    //    return newArr;
+    // }
+    
+    //方法改进
+    function randomArr(iAll,iNow){
+      var arr = [];
+      var allArr = [];
+      for(var i=0; i<iAll; i++){
+        arr.push(i);
+      }
+      
+      for(var j=0; j<iAll/iNow; j++){
+        var newArr = [];
+        for(var i=0; i<iNow; i++){
+        newArr.push(arr.splice(Math.floor(Math.random()*arr.length),1));
+        }
+        allArr.push(newArr);
+      }
+
+      return allArr;
+    }
+  }
+  </script>
+</body>
+</html>

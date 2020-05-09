@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>合成</title>
+  <style type="text/css">
+  body{
+    background: #000;
+    color: #fff;
+    font-size: 30px;
+  }
+  #c1{
+    background: #fff;
+    /*在这里设置画布的宽高以后，在画布里画的图形宽高会等比例缩放*/
+    width: 400px;
+    height: 400px;
+  }
+  #c1 span{
+    color: #fff;
+  }
+  img{
+    background: #fff;
+  }
+  </style>
+</head>
+<body>
+  <canvas id="c1" width="400" height="400"></canvas>
+  <img src="" id="img1">
+    
+  <script type="text/javascript">
+  window.onload = function(){
+    var oC = document.getElementById('c1');
+    var oGC = oC.getContext('2d');
+    var oImg = document.getElementById('img1');
+    
+    // oGC.fillRect(0,0,100,100);
+    
+    // //全局阿尔法值
+    // // oGC.globalAlpha = 0.5;
+    
+    // oGC.fillStyle = 'red';   
+    // // 源：新的图形
+    // // 目标：已经绘制过的图形
+    // // oGC.globalCompositeOperation = 'source-over';
+    // // oGC.globalCompositeOperation = 'destination-over';
+    // // oGC.globalCompositeOperation = 'source-atop';
+    // // oGC.globalCompositeOperation = 'destination-atop';
+    // oGC.globalCompositeOperation = 'xor';
+    // oGC.fillRect(50,50,100,100);
+    
+    // //导出成图片
+    // //   浏览器右键画布可以选择导出为图片
+    // // alert(oC.toDataURL());
+    // oImg.src = oC.toDataURL();
+    
+    // oGC.beginPath();
+    // oGC.arc(100,100,50,0,360*Math.PI/180,false);
+    // oGC.closePath();
+    // oGC.fill();
+
+    // oGC.beginPath();
+    // oGC.arc(200,200,50,0,360*Math.PI/180,false);
+    // oGC.closePath();
+    // oGC.fill();
+    
+    // //只能在画布上进行事件操作
+    // oC.onmousedown = function(event){
+    //   // alert(123);
+      
+    //   var event = event || window.event;
+    //   var x = event.clientX - oC.offsetLeft;
+    //   var y = event.clientY - oC.offsetTop;
+         
+         // isPointInPath 是否在点击范围内
+    //   // oGC.isPointInPath(x,y)只针对最后画出来的图形
+    //   if(oGC.isPointInPath(x,y)){
+    //     alert(341);
+    //   }
+    // }
+    
+    var c1 = new Shape(100,100,50);
+    var c2 = new Shape(200,200,50);
+
+    oC.onmousedown = function(event){
+      var event = event || window.event;
+      var point = {
+        x : event.clientX - oC.offsetLeft,
+        y : event.clientY - oC.offsetTop
+      };
+
+      c1.reDraw(point);
+      c2.reDraw(point);
+    }
+    
+    c1.click = function(){
+      alert(900);
+    }
+    c2.click = function(){
+      alert(911);
+    }
+
+    function Shape(x,y,r){
+      this.x = x;
+      this.y = y;
+      this.r = r;
+
+      oGC.beginPath();
+      oGC.arc(this.x,this.y,this.r,0,360*Math.PI/180,false);
+      oGC.closePath();
+      oGC.fill();
+    }
+    Shape.prototype.reDraw = function(point){
+      oGC.beginPath();
+      oGC.arc(this.x,this.y,this.r,0,360*Math.PI/180,false);
+      oGC.closePath();
+      oGC.fill();
+
+      if (oGC.isPointInPath(point.x,point.y)) {
+        this.click();
+      }
+    }
+  }
+  </script>
+</body>
+</html>    

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>设置图片背景</title>
+  <style type="text/css">
+  body{
+    background: #000;
+  }
+  #c1{
+    background: #fff;
+    /*在这里设置画布的宽高以后，在画布里画的图形宽高会等比例缩放*/
+    width: 400px;
+    height: 400px;
+  }
+  #c1 span{
+    color: #fff;
+  }
+  </style>
+</head>
+<body>
+  <canvas id="c1" width="400" height="400"></canvas>
+
+  <script type="text/javascript">
+  window.onload = function(){
+    var oC = document.getElementById('c1');
+    var oGC = oC.getContext('2d');
+
+    // var yImg = new Image();
+    // yImg.src = 'images/1.jpg';
+
+    // yImg.onload = function(){
+    //   draw(this);
+    // }
+
+    // yImg.src = 'images/1.jpg';
+ 
+    // function draw(obj){
+    //   //背景设置
+    //   var bg = oGC.createPattern(obj,'repeat');
+
+    //   oGC.fillStyle = bg;
+    //   oGC.fillRect(0,0,300,300);
+    // }
+    
+    // //线性渐变
+    // //createLinearGradient:
+    // //    第一组是渐变的起点，第二组渐变的终点
+    // //addColorStop:
+    // //    添加渐变点
+    // var obj = oGC.createLinearGradient(150,100,250,200);
+    // obj.addColorStop(0,'red');
+    // obj.addColorStop(0.5,'yellow');
+    // obj.addColorStop(1,'blue');
+    // oGC.fillStyle = obj;
+    // oGC.fillRect(150,100,100,100);
+    
+
+    // //放射性渐变
+    // //createRadialGradient：
+    // //   第一个圆的坐标和半径，第二个圆的坐标和半径
+    // var obj = oGC.createRadialGradient(200,200,100,200,200,160);
+    // obj.addColorStop(0,'red');
+    // obj.addColorStop(0.5,'yellow');
+    // obj.addColorStop(1,'blue');
+    // oGC.fillStyle = obj;
+    // oGC.fillRect(0,0,oC.width,oC.height);
+    
+    //添加文字
+    //文字的大小 样式(必须写)
+    oGC.font = '60px impact';
+    oGC.textBaseline = 'top'; //middle bottom
+    //偏移量
+    oGC.shadowOffsetX = 10;
+    oGC.shadowOffsetY = 10;
+    //高斯模糊
+    oGC.shadowBlur = 3;
+    // alert(oGC.shadowColor); //rgb(0,0,0,0)默认是黑色透明
+    // 阴影颜色
+    oGC.shadowColor = 'yellow';
+    var w = oGC.measureText('keeny是刺猬').width;
+    oGC.fillText('keeny是刺猬',(oC.width-w)/2,(oC.height-60)/2);
+    //画线
+    // oGC.strokeText('keeny是刺猬',0,200);
+   
+  }
+  </script>
+</body>
+</html>

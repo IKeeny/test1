@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>canvas中的jquery</title>
+  <style type="text/css">
+  body{
+    background: #000;
+    color: #fff;
+    font-size: 30px;
+  }
+  #c1{
+    background: #fff;
+    /*在这里设置画布的宽高以后，在画布里画的图形宽高会等比例缩放*/
+    width: 400px;
+    height: 400px;
+  }
+  #c1 span{
+    color: #fff;
+  }
+  
+  </style>
+</head>
+<body>
+  <canvas id="c1" width="400" height="400"></canvas>
+  <input type="button" name="" id="btn" value="按钮">
+    
+  <script type="text/javascript" src="jCanvaScript.1.5.18.min.js"></script>
+  <script type="text/javascript">
+  window.onload = function(){
+    var oC = document.getElementById('c1');
+    var oGC = oC.getContext('2d');
+    var oInput = document.getElementById('btn');
+    
+    //jCanvaScript(canvas中的jquery)
+    //  http://jcscript.com/
+    
+    //开始和闭合区域，start里面是canvas的id
+    jc.start('c1',true); //第二个参数代表重绘的意思
+    jc.rect(100,100,50,50,'#ff0000',1).id('cc').draggable();
+    jc.circle(200,200,50,'#ff0000',1).click(function(){
+      alert(134);
+    });
+    jc.start('c1');
+
+    oInput.onclick = function(){
+      jc('#cc').color('#ffff00').animate({x:300,y:200},2000);
+    }
+
+  }
+  </script>
+</body>
+</html>    

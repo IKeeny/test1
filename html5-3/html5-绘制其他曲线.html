@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>绘制其他曲线</title>
+  <style type="text/css">
+  body{
+    background: #000;
+  }
+  #c1{
+    background: #fff;
+    /*在这里设置画布的宽高以后，在画布里画的图形宽高会等比例缩放*/
+    width: 400px;
+    height: 400px;
+  }
+  #c1 span{
+    color: #fff;
+  }
+  </style>
+</head>
+<body>
+  <!-- 默认宽300，高150 -->
+  <!-- 直接在canvas上设置宽高和在样式上设置不一样 -->
+  <canvas id="c1" width="400" height="400">
+    <span>不支持canvas的浏览器</span>
+  </canvas>
+
+  <script type="text/javascript">
+  window.onload = function(){
+    var oC = document.getElementById('c1');
+    var oGC = oC.getContext('2d');
+    
+    //oGC.moveTo(100,200);
+
+    // //第一组坐标、第二组坐标
+    // oGC.arcTo(100,100,200,100,50);
+    // oGC.stroke();
+    
+    // //贝塞尔曲线：第一组控制点，第二组结束坐标
+    // oGC.quadraticCurveTo(100,100,200,100);
+    // oGC.stroke();
+    
+    // //贝塞尔曲线：第一组控制点、第二组控制点、第三组结束坐标
+    // oGC.bezierCurveTo(100,100,200,200,200,100);
+    // oGC.stroke();
+    
+    // //移动中心点
+    // oGC.translate(100,100);
+    // //旋转
+    // oGC.rotate(45*Math.PI/180);
+    // //缩放比例：宽、高
+    // oGC.scale(1,0.5);
+    // oGC.fillRect(0,0,100,100);
+    
+    var num = 0;
+    var num2 = 1;
+    var value = 1;
+    oGC.translate(100,100);
+    setInterval(function(){
+      num++;
+      oGC.save();
+      oGC.clearRect(0,0,oC.width,oC.height);
+      if(num2 == 100){
+        value = -1;
+      }else if(num2 == 0){
+        value = 1;
+      }
+      num2 += value;
+      oGC.scale(num2*1/50,num2*1/50);
+      oGC.rotate(num*Math.PI/180);
+      oGC.translate(-50,-50);
+      oGC.fillRect(0,0,100,100);
+      oGC.restore();
+    },30);
+
+  }
+  </script>
+</body>
+</html>
