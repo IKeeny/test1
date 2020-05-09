@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>简易版祖玛小游戏</title>
+  <style type="text/css">
+  body{
+    background: #000;
+    color: #fff;
+    font-size: 30px;
+  }
+  #div1{
+    background: #fff;
+    width: 600px;
+    margin: 20px auto;
+  }
+  #c1{
+    background: #fff;
+  }
+  #c1 span{
+    color: #fff;
+  }
+  
+  </style>
+</head>
+<body>
+<div id="div1">
+  <canvas id="c1" width="600" height="600"></canvas>
+</div>
+ 
+  <!-- <script type="text/javascript" src="jCanvaScript.1.5.18.min.js"></script> -->
+  <script type="text/javascript">
+  window.onload = function(){
+    var oC = document.getElementById('c1');
+    var oGC = oC.getContext('2d');
+    
+    // //绘制路径
+    // //两个圆的拼接
+    // oGC.beginPath();
+    // oGC.arc(300,200,200,-90*Math.PI/180,180*Math.PI/180,false);
+    // //oGC.closePath();  //首尾不连接
+    // // oGC.fill();
+    // oGC.stroke();
+
+    // oGC.beginPath();
+    // oGC.arc(250,200,150,0*Math.PI/180,180*Math.PI/180,true);
+    // oGC.stroke();
+    
+    // //终点的位置
+    // oGC.beginPath();
+    // oGC.arc(400,200,20,0*Math.PI/180,360*Math.PI/180,false);
+    // oGC.stroke();
+    
+    // var i=0;
+    // setInterval(function(){
+    //   //利用重新绘制完成动画效果
+    //   oGC.clearRect(0,0,oC.width,oC.height);
+    //   oGC.beginPath();
+    //   oGC.arc(i++,i++,20,0*Math.PI/180,360*Math.PI/180,false);
+    //   oGC.stroke();
+    // },1000/60);
+    // //1秒/60 是最佳的更新频率
+    
+    //图片预加载
+    var i = 0;
+    var yImg = new Image();
+    yImg.src = 'person.png';
+    yImg.onload = function(){
+       setInterval(function(){
+
+        //每次开始时先清空画布
+        oGC.clearRect(0,0,oC.width,oC.height);
+
+        oGC.beginPath();
+        oGC.arc(300,200,200,-90*Math.PI/180,180*Math.PI/180,false);
+        //oGC.closePath();  //首尾不连接
+        // oGC.fill();
+        oGC.stroke();
+
+        oGC.beginPath();
+        oGC.arc(250,200,150,0*Math.PI/180,180*Math.PI/180,true);
+        oGC.stroke();
+        
+        //终点的位置
+        oGC.beginPath();
+        oGC.arc(400,200,20,0*Math.PI/180,360*Math.PI/180,false);
+        oGC.stroke();
+        
+        //生成环线上的小球
+        for(var i=0; i<ball.length; i++){
+          oGC.beginPath();
+          oGC.moveTo(ball[i].x,ball[i].y)
+          oGC.arc(ball[i].x,ball[i].y,20,0*Math.PI/180,360*Math.PI/180,false);
+          oGC.fill();
+        }
+        
+        //中间的祖玛
+        oGC.save();
+        //移到中心
+        oGC.translate(300,200);
+        //旋转
+        // oGC.rotate(i++*Math.PI/180);
+        oGC.rotate(iRotate);
+        //拉回中心点
+        oGC.translate(-40,-40);
+        oGC.drawImage(yImg,0,0);
+        oGC.restore();
+        
+        //生成子弹
+        for(var i=0; i<bullet.length; i++){
+          oGC.save();
+          oGC.fillStyle = 'red';
+          oGC.beginPath();
+          oGC.moveTo(bullet[i].x,bullet[i].y)
+          oGC.arc(bullet[i].x,bullet[i].y,20,0*Math.PI/180,360*Math.PI/180,false);
+          oGC.fill();
+          oGC.restore();
+        }
+
+        //下方文字 简易祖玛
+        oGC.save();
+        oGC.font = '60px impact';
+        oGC.textBasline = 'top';
+        oGC.fillStyle = 'red';
+        oGC.shadowOffsetX = 10;
+        oGC.shadowOffsetY = 10;
+        oGC.shadowColor = 'green';
+        oGC.shadowBlur = 5;
+        var w = oGC.measureText('简易祖玛').width;
+        var h = 60;
+        oGC.fillText('简易祖玛',(oC.width-w)/2,500);
+        oGC.restore();
+
+      },1000/60);
+      
+      //移动一个小球
+      setInterval(function(){
+        for(var i=0; i<ball.length; i++){
+          ball[i].num++;
+          //转到小圆上去
+          if (ball[i].num == 270) {
+            ball[i].r = 150;
+            ball[i].startX = 250;
+            ball[i].startY = 50;
+          }
+          //270+180 转到终点的停止条件
+          if (ball[i].num == 270 + 180) {
+            alert('游戏结束');
+          }
+          ball[i].x = Math.sin(ball[i].num*Math.PI/180)*ball[i].r + ball[i].startX;
+          ball[i].y = ball[i].r - Math.cos(ball[i].num*Math.PI/180)*ball[i].r + ball[i].startY;
+        }
+
+        //移动子弹
+        for(var i=0; i<bullet.length; i++){
+          bullet[i].x = bullet[i].x + bullet[i].sX;
+          bullet[i].y = bullet[i].y + bullet[i].sY;
+        }
+
+        //检测是否发生碰撞
+        for(var i=0; i<bullet.length; i++){
+          for(var j=0; j<ball.length; j++){
+
+            //碰撞成功，红球和黑球消失---将数组对应的数据值删掉
+            if (pz(bullet[i].x,bullet[i].y,ball[j].x,ball[j].y)) {
+              bullet.splice(i,1);
+              ball.splice(j,1);
+              //有可能循环会出现问题，因此删掉之后跳出循环
+              break;
+            }
+          }
+        }
+
+      },30);
+      
+      //创建小球数组
+      var ball = [];
+      ball[0] = {
+        x: 300,
+        y: 0,
+        r: 200,
+        num: 0,
+        startX: 300,
+        startY: 0
+      };
+      //生成很多小球
+      setInterval(function(){
+        ball.push({
+          x: 300,
+          y: 0,
+          r: 200,
+          num: 0,
+          startX: 300,
+          startY: 0
+        })
+      },350);
+      
+      //头像跟着鼠标位置旋转
+      var iRotate = 0;
+      oC.onmousemove = function(event){
+        var event = event || window.event;
+        var x = event.clientX - oC.offsetLeft;
+        var y = event.clientY - oC.offsetTop;
+
+        var a = x - 300;
+        var b = y - 200;
+
+        var c = Math.sqrt(a*a + b*b);
+
+        if(a>0 && b>0){
+          iRotate = Math.asin(b/c) + 90*Math.PI/180;
+        }else if(a>0){
+          iRotate = Math.asin(a/c);
+        }
+
+        if(a<0 && b>0){
+          iRotate = -(Math.asin(b/c) + 90*Math.PI/180);
+        }else if(a<0){
+          iRotate = Math.asin(a/c);
+        }
+      }
+      
+      //子弹的位置
+      var bullet = [];
+      oC.onmousedown = function(event){
+        var event = event || window.event;
+        var x = event.clientX - oC.offsetLeft;
+        var y = event.clientY - oC.offsetTop;
+
+        var a = x - 300;
+        var b = y - 200;
+
+        var c = Math.sqrt(a*a + b*b);
+
+        var speed = 5;
+
+        var sX = speed * a/c;
+        var sY = speed * b/c;
+
+        bullet.push({
+          x: 300,
+          y: 200,
+          sX: sX,
+          sY: sY
+        });
+
+      }
+    }
+    
+    //小球碰撞检测
+    function pz(x1,y1,x2,y2){
+      var a = x1 - x2;
+      var b = y1 - y2;
+      
+      //球心之间的距离
+      var c = Math.sqrt(a*a + b*b);
+
+      //球心之间的距离小于两小球的半径之和就碰撞了
+      if(c<40){
+        return true;
+      }
+    }
+
+  }
+  </script>
+</body>
+</html>    
