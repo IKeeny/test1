@@ -1,0 +1,1 @@
+撤销git commit, 使用git reset hard commit_id
